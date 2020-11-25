@@ -1,0 +1,14 @@
+- id: is_debuggable
+  description: >-
+    Debug Detection code to detect whether an App is debuggable or not
+    is identified.
+  type: RegexAnd
+  pattern:
+    - import android\.os
+    - Debug\.isDebuggerConnected
+  severity: good
+  input_case: exact
+  cvss: ''
+  cwe: ''
+  owasp-mobile: ''
+  masvs: ''

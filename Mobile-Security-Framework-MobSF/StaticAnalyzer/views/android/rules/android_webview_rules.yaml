@@ -1,0 +1,14 @@
+- id: android_webview
+  description: >-
+    Insecure WebView Implementation. Execution of user controlled code in
+    WebView is a critical Security Hole.
+  type: RegexAnd
+  pattern:
+    - setJavaScriptEnabled\(true\)
+    - \.addJavascriptInterface\(
+  severity: warning
+  input_case: exact
+  cvss: 8.8
+  cwe: cwe-749
+  owasp-mobile: m1
+  masvs: platform-7

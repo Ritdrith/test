@@ -1,0 +1,22 @@
+- id: android_detect_root
+  cvss: 0
+  cwe: ''
+  description: This App may have root detection capabilities.
+  input_case: exact
+  masvs: resilience-1
+  owasp-mobile: ''
+  pattern:
+    - \.contains\("test-keys"\)
+    - \/system\/app\/Superuser.apk
+    - isDeviceRooted\(\)
+    - \/system\/bin\/failsafe\/su
+    - \/system\/sd\/xbin\/su
+    - '"\/system\/xbin\/which", "su"'
+    - RootTools\.isAccessGiven\(\)
+    - \/system\/bin(\/[a-z]+)?\/su
+    - \/system\/xbin(\/[a-z]+)?\/su
+    - \/system\/sbin(\/[a-z]+)?\/su
+    - \/sbin(\/[a-z]+)?\/su
+    - \/vendor\/bin(\/[a-z]+)?\/su
+  severity: good
+  type: RegexOr

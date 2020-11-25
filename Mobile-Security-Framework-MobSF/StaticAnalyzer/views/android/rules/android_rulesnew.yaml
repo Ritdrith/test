@@ -1,0 +1,50 @@
+- id: android_webview
+  description: >-
+    Insecure WebView Implementation. Execution of user controlled code in
+    WebView is a critical Security Hole.
+  type: RegexAnd
+  pattern:
+    - setJavaScriptEnabled\(true\)
+    - \.addJavascriptInterface\(
+  severity: warning
+  input_case: exact
+  cvss: 8.8
+  cwe: cwe-749
+  owasp-mobile: m1
+  masvs: platform-7
+- id: is_debuggable
+  description: >-
+    Debug Detection code to detect whether an App is debuggable or not
+    is identified.
+  type: RegexAnd
+  pattern:
+    - import android\.os
+    - Debug\.isDebuggerConnected
+  severity: good
+  input_case: exact
+  cvss: ''
+  cwe: ''
+  owasp-mobile: ''
+  masvs: ''
+- id: android_detect_root
+  cvss: 0
+  cwe: ''
+  description: This App may have root detection capabilities.
+  input_case: exact
+  masvs: resilience-1
+  owasp-mobile: ''
+  pattern:
+    - \.contains\("test-keys"\)
+    - \/system\/app\/Superuser.apk
+    - isDeviceRooted\(\)
+    - \/system\/bin\/failsafe\/su
+    - \/system\/sd\/xbin\/su
+    - '"\/system\/xbin\/which", "su"'
+    - RootTools\.isAccessGiven\(\)
+    - \/system\/bin(\/[a-z]+)?\/su
+    - \/system\/xbin(\/[a-z]+)?\/su
+    - \/system\/sbin(\/[a-z]+)?\/su
+    - \/sbin(\/[a-z]+)?\/su
+    - \/vendor\/bin(\/[a-z]+)?\/su
+  severity: good
+  type: RegexOr
